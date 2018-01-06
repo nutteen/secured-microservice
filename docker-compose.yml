@@ -1,0 +1,60 @@
+version: '2'
+
+services:
+
+  keycloak-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+      - POSTGRES_DB=keycloak
+    volumes:
+      - keycloak_postgresql:/var/lib/postgresql
+      - keycloak_postgresql_data:/var/lib/postgresql/data
+    restart: always
+
+  keycloak:
+    image: jboss/keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=pass
+    ports:
+      - 8888:8080
+      - 9990:9990
+    links:
+      - keycloak-db:postgres
+    restart: always
+
+  eureka-server:
+    image: peeranut/eureka-server:0.0.2-SNAPSHOT
+    ports:
+      - 8761:8080
+    restart: always
+
+  configuration-service:
+    image: peeranut/configuration-service:0.0.2-SNAPSHOT
+    ports:
+      - 8889:8080
+    restart: always
+    
+  zuul-server:
+    image: peeranut/zuul-server:0.0.2-SNAPSHOT
+    ports:
+      - 8091:8080
+    restart: always
+
+  admin-server:
+    image: peeranut/admin-server:0.0.2-SNAPSHOT
+    ports:
+      - 8092:8080
+    restart: always
+
+  purchase-service:
+    image: peeranut/purchase-service:0.0.2-SNAPSHOT
+    ports:
+      - 8093:8080
+    restart: always
+
+volumes:
+  keycloak_postgresql:
+  keycloak_postgresql_data:    
