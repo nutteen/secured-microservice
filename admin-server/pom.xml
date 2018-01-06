@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example.securedmicroservice</groupId>
-	<artifactId>eureka-server</artifactId>
+	<artifactId>admin-server</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eureka-server</name>
+	<name>admin-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -22,7 +22,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
 		<dockerfile-maven-version>1.3.7</dockerfile-maven-version>
 	</properties>
 
@@ -30,14 +29,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>
@@ -48,22 +39,15 @@
 
 		<dependency>
 			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<artifactId>spring-boot-admin-server</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server-ui</artifactId>
 			<version>1.5.6</version>
 		</dependency>
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -95,7 +79,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>peeranut/${artifactId}</repository>
+					<repository>peeranut/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>

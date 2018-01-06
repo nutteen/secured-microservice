@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example.securedmicroservice</groupId>
-	<artifactId>eureka-server</artifactId>
+	<groupId>com.apft</groupId>
+	<artifactId>configuration-service</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eureka-server</name>
-	<description>Demo project for Spring Boot</description>
+	<name>configuration-service</name>
+	<description>Spring boot configuration service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,11 +33,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
 		<dependency>
@@ -95,7 +91,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>peeranut/${artifactId}</repository>
+					<repository>peeranut/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
