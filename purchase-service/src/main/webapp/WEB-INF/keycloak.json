@@ -1,0 +1,9 @@
+{
+  "realm": "apft",
+  "auth-server-url": "http://192.168.1.50:8888/auth",
+  "ssl-required": "external",
+  "resource": "payment-service",
+  "credentials": {
+    "secret": "be9f71f1-959b-46e8-aa5d-89a9c558411d"
+  }
+}
